@@ -17,3 +17,23 @@ pub fn parse_package_name_empty_input_test() {
   |> non_empty_list.to_list
   |> expect.list_to_contain(package_name.EmptyInput("name is empty"))
 }
+
+pub fn parse_package_name_whitespace_only_input_test() {
+  " "
+  |> package_name.parse
+  |> expect.to_be_error
+  |> non_empty_list.to_list
+  |> expect.list_to_contain(package_name.WhitespaceOnlyInput(
+    "name consists only of whitespace characters",
+  ))
+}
+
+pub fn parse_package_name_invalid_name_test() {
+  "gleam-stdlib"
+  |> package_name.parse
+  |> expect.to_be_error
+  |> non_empty_list.to_list
+  |> expect.list_to_contain(package_name.InvalidName(
+    "name is not a valid identifier",
+  ))
+}
