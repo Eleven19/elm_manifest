@@ -18,3 +18,4 @@ non_empty_list = ">= 2.0.0 and < 3.0.0"
 
 [dev-dependencies]
 gleeunit = ">= 1.0.0 and < 2.0.0"
+startest = ">= 0.4.0 and < 1.0.0"
